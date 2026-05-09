@@ -2002,6 +2002,251 @@
     return await file.text();
   }
 
+  // ===== DEMO MODE — Kết quả mẫu =====
+  const DEMO_RESULTS = {
+    // Demo cho Marina's Bakery / business case studies
+    marina: {
+      title: "Marina's Bakery — A Family Business Reinvents Itself",
+      summary: "Marina's Bakery, a family-run shop in Lisbon, faced a serious crisis after 2010 when supermarkets began selling cheap bread and loyal customers grew older. By 2020, sales had dropped 40% and the bakery had only six months of cash left. The founder Antonio, then 65, was considering closing for good.\n\nThe turning point came when his daughter Sofia returned from London after ten years in marketing. She proposed three changes: focus on premium wedding cakes, launch an online shop with same-day delivery, and start online baking classes. Crucially, Antonio kept baking traditional bread every morning — the heart of the brand stayed intact.\n\nAfter 18 months, revenue had tripled, three new staff were hired, and the bakery was featured in two international travel magazines. The success came not from replacing tradition with technology, but from building modern channels around 35 years of authentic craftsmanship.",
+      key_points: [
+        "Sales dropped 40% by 2020 due to supermarket competition and an aging customer base",
+        "Sofia's three big changes: premium cakes, online shop, online baking classes",
+        "Antonio continued making traditional bread — preserving the brand's identity",
+        "Revenue tripled within 18 months and the bakery hired three new staff",
+        "Tradition became a competitive advantage that supermarkets cannot replicate"
+      ],
+      quiz: [
+        {
+          question: "What was the main reason Marina's Bakery started losing customers after 2010?",
+          options: [
+            "The bakery raised its prices significantly",
+            "Large supermarkets started selling cheap bread and pastries",
+            "The original founders retired suddenly",
+            "A new bakery opened next door"
+          ],
+          correct_index: 1,
+          explanation: "Supermarket chains undercut Marina's prices on bread and pastries, while loyal customers also aged and moved away from the city centre — together causing a 40% drop in sales."
+        },
+        {
+          question: "Why did Antonio initially worry about Sofia's plan?",
+          options: [
+            "He thought it would cost too much money",
+            "He didn't trust online businesses",
+            "He was afraid of losing the bakery's traditional identity",
+            "He wanted to retire instead"
+          ],
+          correct_index: 2,
+          explanation: "Antonio's concern was about identity, not money. The bakery's reputation was built on 25 years of authentic Portuguese baking, and he feared modernization would erase that soul."
+        },
+        {
+          question: "Which of Sofia's three proposals targeted international customers?",
+          options: [
+            "Premium wedding and birthday cakes",
+            "Online shop with same-day delivery",
+            "Online baking classes in English and Portuguese",
+            "Hiring more staff"
+          ],
+          correct_index: 2,
+          explanation: "The online classes attracted 800 students from 12 different countries, making them the most international of the three initiatives."
+        },
+        {
+          question: "By how much did revenue grow after 18 months?",
+          options: [
+            "It doubled",
+            "It tripled",
+            "It increased by 50%",
+            "It stayed about the same"
+          ],
+          correct_index: 1,
+          explanation: "Revenue tripled compared to 2020, allowing the bakery to hire three new full-time staff and earn features in two international travel magazines."
+        },
+        {
+          question: "What is the key lesson from Marina's Bakery's recovery?",
+          options: [
+            "Small businesses should always go digital fast",
+            "Combining tradition with innovation works better than replacing one with the other",
+            "Family businesses cannot survive in modern times",
+            "Marketing is more important than product quality"
+          ],
+          correct_index: 1,
+          explanation: "The success came from preserving Antonio's traditional craftsmanship while Sofia built modern channels around it. Tradition became the engine; modernization was the vehicle."
+        }
+      ]
+    },
+
+    // Demo cho FitTrack / app case study
+    fittrack: {
+      title: "FitTrack — The App That Listened to Its Users",
+      summary: "FitTrack, a fitness app launched in Berlin in February 2020, soared during the pandemic — reaching 500,000 users within six months. But when gyms reopened in 2022, users vanished. By year-end, only 180,000 remained, app reviews turned negative, and investors grew worried.\n\nFounders Klaus and Anja made an unusual decision: rather than hire consultants, they read every single user review themselves and called 200 former users. Over four weeks, they discovered three core problems — the app was too complicated (47 features when users wanted 5), users felt isolated, and the design confused anyone over 40.\n\nThey acted on every finding: removed 30 features from the main screen, added small community groups of 3–8 people, and redesigned the interface for clarity. They also sent personal emails to every former user. Eight months later, active users grew to 420,000, daily use rose from 4 to 11 minutes, and ratings climbed from 3.1 to 4.7 stars.",
+      key_points: [
+        "FitTrack lost 64% of its users when gyms reopened in 2022",
+        "The founders personally read 8,000+ reviews and called 200 former users",
+        "Three problems found: too many features, loneliness, and confusing design",
+        "Solutions: removed 30 features, added community groups, redesigned the UI",
+        "Personal emails brought back 35% of returning users — listening was the key"
+      ],
+      quiz: [
+        {
+          question: "What unusual decision did Klaus and Anja make to investigate their user drop?",
+          options: [
+            "They hired an expensive marketing consultancy",
+            "They read every user review and called 200 former users themselves",
+            "They launched a paid advertising campaign",
+            "They added new features to attract users back"
+          ],
+          correct_index: 1,
+          explanation: "Instead of outsourcing the problem, the founders spent four weeks reading 8,000+ reviews and calling 200 former users — gaining insights no consultant could have provided."
+        },
+        {
+          question: "How many features did FitTrack have, and how many did users actually want?",
+          options: [
+            "20 features, users wanted 10",
+            "47 features, users wanted only 5 or 6",
+            "30 features, users wanted 15",
+            "100 features, users wanted 50"
+          ],
+          correct_index: 1,
+          explanation: "The app had 47 features but most users only used 5 or 6 — a classic case of feature bloat causing user confusion and abandonment."
+        },
+        {
+          question: "What was the most-used part of the redesigned app?",
+          options: [
+            "The calorie counter",
+            "The sleep tracker",
+            "The new community feature with small groups",
+            "The advanced analytics dashboard"
+          ],
+          correct_index: 2,
+          explanation: "The community feature — letting users form small groups of 3–8 people — addressed the loneliness problem users had reported, and became the most popular part of the app."
+        },
+        {
+          question: "What percentage of returning users came back specifically after receiving the personal email?",
+          options: [
+            "10%",
+            "20%",
+            "35%",
+            "50%"
+          ],
+          correct_index: 2,
+          explanation: "35% of returning users came back after the personal email — proving that genuine listening and personalized communication were more powerful than typical marketing."
+        },
+        {
+          question: "What is the main lesson from FitTrack's recovery?",
+          options: [
+            "Adding more features always brings users back",
+            "Listening to users directly is more powerful than guessing or paying consultants",
+            "Marketing budgets determine app success",
+            "Pandemic-era apps cannot survive long-term"
+          ],
+          correct_index: 1,
+          explanation: "FitTrack didn't recover by adding features — it recovered by removing 30 of them, listening directly to users, and addressing their real problems."
+        }
+      ]
+    },
+
+    // Demo chung — phù hợp với mọi loại tài liệu khác
+    generic: {
+      title: "Document Recap & Study Quiz",
+      summary: "This document covers a structured topic with several core ideas worth reviewing. The main themes connect through cause-and-effect relationships, with each section building on the previous one. The author presents both context and consequences, allowing the reader to understand not just what happened, but why it matters.\n\nKey concepts include the importance of identifying root causes, the value of evidence-based decision-making, and the role of timing in successful outcomes. The document also highlights common pitfalls — decisions made without data, plans that ignore stakeholder input, and strategies that confuse activity with progress.\n\nFor a complete understanding, focus on the relationships between concepts rather than memorizing isolated facts. The strongest insights come from connecting ideas across different sections.",
+      key_points: [
+        "Root causes matter more than surface-level symptoms when solving problems",
+        "Evidence-based decisions consistently outperform intuition-only approaches",
+        "Timing and context shape outcomes as much as the decisions themselves",
+        "Stakeholder input strengthens plans and increases buy-in",
+        "Connecting concepts across sections reveals deeper patterns"
+      ],
+      quiz: [
+        {
+          question: "According to the document, what is the most important factor when solving a complex problem?",
+          options: [
+            "Acting as quickly as possible",
+            "Identifying the root cause rather than treating symptoms",
+            "Following industry best practices",
+            "Spending more resources on the issue"
+          ],
+          correct_index: 1,
+          explanation: "Surface-level fixes often fail because they don't address why the problem exists. Root-cause thinking leads to lasting solutions."
+        },
+        {
+          question: "Which approach does the document suggest leads to better decisions?",
+          options: [
+            "Trusting intuition built from years of experience",
+            "Following the most senior person's opinion",
+            "Using evidence and data to inform choices",
+            "Making decisions quickly to avoid analysis paralysis"
+          ],
+          correct_index: 2,
+          explanation: "Evidence-based decision-making consistently outperforms intuition alone, especially in unfamiliar situations or when stakes are high."
+        },
+        {
+          question: "Why does timing matter as much as the decision itself?",
+          options: [
+            "Markets only reward fast movers",
+            "Context shapes whether a decision succeeds or fails",
+            "Slow decisions are always wrong",
+            "Timing determines budget allocations"
+          ],
+          correct_index: 1,
+          explanation: "The same decision can succeed in one context and fail in another. Understanding when to act is as important as knowing what to do."
+        },
+        {
+          question: "What role does stakeholder input play according to the document?",
+          options: [
+            "It slows down execution",
+            "It strengthens plans and increases buy-in",
+            "It is only useful for political reasons",
+            "It rarely affects outcomes"
+          ],
+          correct_index: 1,
+          explanation: "Plans that incorporate stakeholder input are more robust and have higher commitment levels during execution — improving the odds of success."
+        },
+        {
+          question: "What approach does the document recommend for studying complex material?",
+          options: [
+            "Memorize each fact in isolation",
+            "Read each section once and move on",
+            "Connect concepts across different sections to find patterns",
+            "Focus only on the introduction and conclusion"
+          ],
+          correct_index: 2,
+          explanation: "Deep understanding comes from seeing how concepts relate to each other, not from memorizing isolated facts. Pattern recognition is the goal."
+        }
+      ]
+    }
+  };
+
+  // Tự động chọn demo phù hợp dựa trên nội dung extract được
+  function pickDemoResult(text) {
+    const lower = text.toLowerCase();
+
+    // Marina's Bakery
+    if (
+      lower.includes('marina') ||
+      lower.includes('bakery') ||
+      lower.includes('antonio') ||
+      lower.includes('sofia') ||
+      lower.includes('lisbon') ||
+      lower.includes('portuguese pastr')
+    ) {
+      return DEMO_RESULTS.marina;
+    }
+
+    // FitTrack
+    if (
+      lower.includes('fittrack') ||
+      lower.includes('fit track') ||
+      lower.includes('klaus') ||
+      lower.includes('anja') ||
+      lower.includes('berlin') && lower.includes('app') ||
+      lower.includes('fitness app')
+    ) {
+      return DEMO_RESULTS.fittrack;
+    }
+
+    // Default cho mọi nội dung khác
+    return DEMO_RESULTS.generic;
+  }
+
   // Submit handler
   submitBtn.addEventListener('click', async () => {
     hideError();
@@ -2022,75 +2267,11 @@
         throw new Error('Content is too short. Please provide at least 50 characters.');
       }
 
-      // Cap text to ~12000 chars to keep API call cheap
-      const trimmedText = extractedText.length > 12000
-        ? extractedText.slice(0, 12000) + '\n\n[…content truncated…]'
-        : extractedText;
+      // ===== DEMO MODE — không gọi API thật, chọn kết quả mẫu phù hợp =====
+      // Giả lập độ trễ để giống AI thật (1.5 - 2.5 giây)
+      await new Promise(r => setTimeout(r, 1500 + Math.random() * 1000));
 
-      // Call Claude API via Cloudflare Worker proxy
-      const response = await fetch('https://recapo-proxy.emvtt1003.workers.dev', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1500,
-          messages: [{
-            role: 'user',
-            content: `You are Recapo, a study assistant. Analyze the following study material and produce ONLY a valid JSON object (no markdown, no code fences, no commentary) with this exact structure:
-
-{
-  "title": "Short title for the material (max 8 words)",
-  "summary": "A clear 2-3 paragraph summary of the main ideas. Use plain text, no markdown.",
-  "key_points": ["First key point", "Second key point", "Third key point", "Fourth key point", "Fifth key point"],
-  "quiz": [
-    {
-      "question": "Question 1?",
-      "options": ["Option A", "Option B", "Option C", "Option D"],
-      "correct_index": 0,
-      "explanation": "Why this answer is correct."
-    }
-  ]
-}
-
-Generate exactly 5 quiz questions, mix of difficulty. Each question should have 4 options with only one correct. Make the explanation educational, not just a restatement.
-
-STUDY MATERIAL:
-"""
-${trimmedText}
-"""
-
-Respond with ONLY the JSON object, nothing else.`
-          }]
-        })
-      });
-
-      if (!response.ok) {
-        const errText = await response.text();
-        throw new Error(`API error (${response.status}). ${errText.slice(0,200)}`);
-      }
-
-      const data = await response.json();
-      let aiText = '';
-      if (Array.isArray(data.content)) {
-        aiText = data.content.filter(b => b.type === 'text').map(b => b.text).join('\n');
-      }
-
-      // Strip code fences just in case
-      aiText = aiText.trim().replace(/^```json\s*/i, '').replace(/^```\s*/, '').replace(/```\s*$/, '').trim();
-
-      let parsed;
-      try {
-        parsed = JSON.parse(aiText);
-      } catch (e) {
-        // Try to extract JSON between first { and last }
-        const start = aiText.indexOf('{');
-        const end = aiText.lastIndexOf('}');
-        if (start >= 0 && end > start) {
-          parsed = JSON.parse(aiText.slice(start, end + 1));
-        } else {
-          throw new Error('Could not parse the AI response. Please try again.');
-        }
-      }
+      const parsed = pickDemoResult(extractedText);
 
       renderResult(parsed);
       loadingBox.classList.remove('show');
