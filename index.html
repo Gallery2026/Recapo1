@@ -1986,7 +1986,7 @@
         : extractedText;
 
       // Call Claude API
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      const response = await fetch('https://recapo-proxy.emvtt1003.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
