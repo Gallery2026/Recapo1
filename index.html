@@ -1642,8 +1642,8 @@
           <h3>Drop your file here</h3>
           <p>or click to browse</p>
           <label for="file-input" class="upload-btn">Choose file</label>
-          <input type="file" id="file-input" accept=".pdf,.txt,.md" style="display:none;">
-          <div class="upload-hint">PDF · TXT · MD · max 10 MB</div>
+          <input type="file" id="file-input" accept=".pdf,.txt,.md,.docx,.doc,.rtf,.csv" style="display:none;">
+          <div class="upload-hint">PDF · DOCX · DOC · TXT · MD · RTF · max 10 MB</div>
         </div>
         <div class="file-chip" id="file-chip">
           <div class="file-chip-icon" id="file-chip-icon">PDF</div>
@@ -1815,6 +1815,11 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   };
 
+  // Load Mammoth.js for parsing Word (.docx) files
+  const mammothScript = document.createElement('script');
+  mammothScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js';
+  document.head.appendChild(mammothScript);
+
   const tryTabs = document.querySelectorAll('.try-tab');
   const tryPanels = document.querySelectorAll('.try-panel');
   const fileInput = document.getElementById('file-input');
@@ -1885,9 +1890,9 @@
   function handleFile(file) {
     if (!file) return;
     const okTypes = ['application/pdf', 'text/plain', 'text/markdown', ''];
-    const okExt = /\.(pdf|txt|md)$/i.test(file.name);
+    const okExt = /\.(pdf|txt|md|docx|doc|rtf|csv)$/i.test(file.name);
     if (!okExt) {
-      showError('Please upload a PDF, TXT, or MD file.');
+      showError('Unsupported file type. Please upload PDF, DOCX, DOC, TXT, MD, RTF, or CSV.');
       return;
     }
     if (file.size > 10 * 1024 * 1024) {
@@ -1941,7 +1946,10 @@
 
   // Extract text from file
   async function extractTextFromFile(file) {
-    if (file.type === 'application/pdf' || /\.pdf$/i.test(file.name)) {
+    const name = file.name.toLowerCase();
+
+    // PDF
+    if (file.type === 'application/pdf' || /\.pdf$/i.test(name)) {
       if (typeof pdfjsLib === 'undefined') {
         throw new Error('PDF reader not loaded yet, please try again in a second.');
       }
@@ -1956,7 +1964,41 @@
       }
       return text.trim();
     }
-    // .txt / .md
+
+    // Word .docx
+    if (/\.docx$/i.test(name)) {
+      if (typeof mammoth === 'undefined') {
+        throw new Error('Word reader not loaded yet, please try again in a second.');
+      }
+      const buffer = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({ arrayBuffer: buffer });
+      return result.value.trim();
+    }
+
+    // Old Word .doc — not supported by mammoth, give friendly message
+    if (/\.doc$/i.test(name)) {
+      throw new Error('Old .doc format is not supported. Please save the file as .docx and try again.');
+    }
+
+    // RTF — strip RTF tags to get plain text
+    if (/\.rtf$/i.test(name)) {
+      const raw = await file.text();
+      return raw
+        .replace(/\\par[d]?/g, '\n')
+        .replace(/\\[a-z]+-?\d* ?/g, '')
+        .replace(/[{}]/g, '')
+        .replace(/\\'/g, "'")
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+    }
+
+    // CSV — read as text, replace commas with spaces for readability
+    if (/\.csv$/i.test(name)) {
+      const raw = await file.text();
+      return raw.trim();
+    }
+
+    // .txt / .md — plain text
     return await file.text();
   }
 
@@ -1985,7 +2027,7 @@
         ? extractedText.slice(0, 12000) + '\n\n[…content truncated…]'
         : extractedText;
 
-      // Call Claude API
+      // Call Claude API via Cloudflare Worker proxy
       const response = await fetch('https://recapo-proxy.emvtt1003.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
